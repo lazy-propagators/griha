@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "867683964256",
+    "firebase_url": "https://smartgriha-da048.firebaseio.com",
+    "project_id": "smartgriha-da048",
+    "storage_bucket": "smartgriha-da048.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:867683964256:android:d4f778e55badd02d",
+        "android_client_info": {
+          "package_name": "com.raushansingh.smartgriha"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "867683964256-q7k2uh4jao1i9t77uojh234m6mst85kr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDVPwM155eT5Rerp_LTrvd463o7XnSnKK4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
