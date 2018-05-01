@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.widget.RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.raushansingh.smartgriha.Registration">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="24dp"
+        app:srcCompat="@drawable/smart" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="49dp"
+        android:text="REGISTRATION"
+        android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large" />
+
+    <EditText
+        android:id="@+id/new_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="17dp"
+        android:ems="10"
+        android:hint="email-id"
+        android:inputType="textEmailAddress" />
+
+    <EditText
+        android:id="@+id/new_pass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/new_email"
+        android:layout_below="@+id/new_email"
+        android:layout_marginTop="31dp"
+        android:ems="10"
+        android:hint="set password"
+        android:inputType="textPassword" />
+
+    <EditText
+        android:id="@+id/mob_no"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/new_pass"
+        android:layout_below="@+id/new_pass"
+        android:layout_marginTop="22dp"
+        android:ems="10"
+        android:hint="mobile no."
+        android:inputType="phone" />
+
+    <Button
+        android:id="@+id/submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="83dp"
+        android:text="SUBMIT"
+        android:onClick="onClick" />
+</android.widget.RelativeLayout>

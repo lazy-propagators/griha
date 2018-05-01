@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "867683964256-ghgljomlq8svm43iujtsagcdt5ndcttn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.raushansingh.smartgriha",
+            "certificate_hash": "e6c4db90690c657e36e5f2cd988ab2a4354c4c57"
+          }
+        },
+        {
           "client_id": "867683964256-q7k2uh4jao1i9t77uojh234m6mst85kr.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -29,8 +37,13 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "867683964256-q7k2uh4jao1i9t77uojh234m6mst85kr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "ads_service": {
           "status": 2

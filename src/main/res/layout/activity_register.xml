@@ -1,83 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.widget.RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.raushansingh.smartgriha.Register">
 
+
+    <ImageView
+        android:id="@+id/smartgriha"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="22dp"
+        app:srcCompat="@drawable/smart" />
+
+    <TextView
+        android:id="@+id/login_signup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/smartgriha"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="51dp"
+        android:text="LOGIN | SIGNUP"
+        android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large" />
+
     <EditText
         android:id="@+id/efield"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="25dp"
-        android:layout_marginEnd="84dp"
-        android:layout_marginStart="85dp"
-        android:layout_marginTop="129dp"
+        android:layout_below="@+id/login_signup"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="22dp"
         android:ems="10"
-        android:hint="@string/enter_email_id"
-        android:inputType="textEmailAddress"
-        app:layout_constraintBottom_toTopOf="@+id/pfield"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:hint="email-id"
+        android:inputType="textEmailAddress" />
 
     <EditText
         android:id="@+id/pfield"
         android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:layout_marginEnd="84dp"
-        android:layout_marginStart="85dp"
-        android:layout_marginTop="25dp"
-        android:ems="10"
-        android:hint="@string/enter_password_here"
-        android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/efield" />
-
-    <Button
-        android:id="@+id/register"
-        android:layout_width="122dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="186dp"
-        android:layout_marginEnd="137dp"
-        android:layout_marginStart="159dp"
-        android:layout_marginTop="27dp"
-        android:text="@string/register"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pfield" />
+        android:layout_alignEnd="@+id/efield"
+        android:layout_centerVertical="true"
+        android:ems="10"
+        android:hint="password"
+        android:inputType="textPassword" />
 
     <TextView
-        android:id="@+id/sign"
+        android:id="@+id/forgot"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="167dp"
-        android:layout_marginEnd="96dp"
-        android:layout_marginStart="96dp"
-        android:layout_marginTop="1dp"
-        android:text="@string/already_registered_sign_in_here"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.461"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/register"
-        app:layout_constraintVertical_bias="0.0" />
+        android:layout_below="@+id/pfield"
+        android:layout_centerHorizontal="true"
+        android:text="forgot password?" />
 
-    <ImageView
-        android:id="@+id/imageView"
+    <Button
+        android:id="@+id/login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="31dp"
-        android:layout_marginEnd="100dp"
-        android:layout_marginStart="101dp"
-        android:layout_marginTop="51dp"
-        app:layout_constraintBottom_toTopOf="@+id/efield"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/smart" android:contentDescription="TODO" />
+        android:layout_below="@+id/forgot"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:text="LOGIN" />
 
-</android.support.constraint.ConstraintLayout>
+    <TextView
+        android:id="@+id/signup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/login"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="11dp"
+        android:text="new user? register here" />
+
+    <TextView
+        android:id="@+id/follow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/signup"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="follow us on"
+        android:textAppearance="@android:style/TextAppearance.Medium" />
+
+    <ImageButton
+        android:id="@+id/facebook"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/follow"
+        android:layout_toStartOf="@+id/signup"
+        app:srcCompat="@drawable/facebook" />
+
+    <ImageButton
+        android:id="@+id/twitter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/login"
+        android:layout_below="@+id/follow"
+        app:srcCompat="@drawable/twitter" />
+
+    <ImageButton
+        android:id="@+id/linkedin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/follow"
+        android:layout_toEndOf="@+id/login_signup"
+        app:srcCompat="@drawable/linkedin" />
+
+</android.widget.RelativeLayout>

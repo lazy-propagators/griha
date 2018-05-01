@@ -1,9 +1,4 @@
 <resources>
     <string name="app_name">Smart Griha</string>
-    <string name="email">Name</string>
-    <string name="pass">Name</string>
-    <string name="enter_password_here">enter password here</string>
-    <string name="enter_email_id">enter email id</string>
-    <string name="register">register</string>
-    <string name="already_registered_sign_in_here">already registered? sign in here</string>
+
 </resources>
