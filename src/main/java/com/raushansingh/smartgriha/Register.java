@@ -69,7 +69,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
     public void onStart()
     {
         super.onStart();
-        firebaseAuth.addAuthStateListener(firebaseAuthListener);
+       // firebaseAuth.addAuthStateListener(firebaseAuthListener);
 
     }
 
@@ -96,6 +96,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
                 if(task.isSuccessful()) {
                     Toast.makeText(Register.this, "logged in successfully", Toast.LENGTH_SHORT).show();
                     FirebaseUser user =FirebaseAuth.getInstance().getCurrentUser();
+                    Intent i =new Intent(Register.this,Account.class);
                     if(user!=null)
                     {
                         String name =user.getDisplayName();
@@ -104,8 +105,11 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
 
                         boolean emailVerified =user.isEmailVerified();
                         String uid =user.getUid();
+                        i.putExtra("email_id",email);
+
                     }
-                    // startActivity(new Intent(Register.this,Account.class));
+                    startActivity(i);
+                    finish();
                 }
                 else
                     Toast.makeText(Register.this,"could not log in...please try again!",Toast.LENGTH_SHORT).show();
@@ -116,6 +120,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
 
     }
 
+
     private void sign_in()
     {
         Toast.makeText(this,"taking you to registration page",Toast.LENGTH_SHORT).show();
@@ -125,6 +130,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
     private void forgot_pass()
     {
         Toast.makeText(this,"forgot your password",Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(this,forgotPassword.class));
     }
 
     private void fb_follow()

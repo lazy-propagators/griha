@@ -15,4 +15,14 @@
         android:layout_marginTop="21dp"
         android:text="Account Information"
         android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large" />
+
+    <TextView
+        android:id="@+id/emailfield"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView3"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="46dp"
+        android:text="email-id"
+        android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large" />
 </android.widget.RelativeLayout>
