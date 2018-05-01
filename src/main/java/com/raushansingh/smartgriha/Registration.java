@@ -53,7 +53,7 @@ public class Registration extends AppCompatActivity {
     {
         super.onStart();
         FirebaseUser currUser =mAuth.getCurrentUser();
-        mAuth.addAuthStateListener(mAuthListener);
+       // mAuth.addAuthStateListener(mAuthListener);
     }
 
     private void createAccount()
@@ -85,6 +85,7 @@ public class Registration extends AppCompatActivity {
                 {
                     Toast.makeText(Registration.this,"Registered successfully",Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(Registration.this, Activity.class));
+                    finish();
                 }
                 else
                     Toast.makeText(Registration.this,"could not register...please try again!",Toast.LENGTH_SHORT).show();
