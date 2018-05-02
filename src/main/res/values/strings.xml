@@ -1,4 +1,12 @@
 <resources>
     <string name="app_name">Smart Griha</string>
-
+    <string name="connect">Explore your device</string>
+    <string name="add_device">Add Devices</string>
+    <string name="customize">Customize</string>
+    <string name="share">Share Your Device</string>
+    <string name="about">About Us</string>
+    <string name="help">Help</string>
+    <string name="service">Service on call</string>
 </resources>
+
+
