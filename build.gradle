@@ -29,7 +29,7 @@ android {
     compileSdkVersion 26
     defaultConfig {
         applicationId "com.raushansingh.smartgriha"
-        minSdkVersion 23
+        minSdkVersion 22
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"

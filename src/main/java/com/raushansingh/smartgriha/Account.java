@@ -1,11 +1,21 @@
 package com.raushansingh.smartgriha;
 
+import android.content.DialogInterface;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.GravityCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
+import android.webkit.WebView;
 import android.widget.TextView;
 
 import com.mikepenz.materialdrawer.AccountHeader;
@@ -21,6 +31,8 @@ import com.mikepenz.materialdrawer.model.interfaces.IProfile;
 public class Account extends AppCompatActivity {
 
     private TextView textView;
+    Drawer drawer ;
+    ActionBar actionbar;
     PrimaryDrawerItem item1 = new PrimaryDrawerItem().withIdentifier(1).withName(R.string.connect);
     PrimaryDrawerItem item2 = new PrimaryDrawerItem().withIdentifier(2).withName(R.string.add_device);
     PrimaryDrawerItem item3 = new PrimaryDrawerItem().withIdentifier(3).withName(R.string.customize);
@@ -28,7 +40,7 @@ public class Account extends AppCompatActivity {
     PrimaryDrawerItem item5 = new PrimaryDrawerItem().withIdentifier(5).withName(R.string.about);
     PrimaryDrawerItem item6 = new PrimaryDrawerItem().withIdentifier(6).withName(R.string.help);
     PrimaryDrawerItem item7 = new PrimaryDrawerItem().withIdentifier(7).withName(R.string.service);
-//    private Toolbar toolbar = findViewById(R.id.toolbar);
+
 
 
 
@@ -36,11 +48,19 @@ public class Account extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        final ActionBar actionBar = getSupportActionBar();
-        actionBar.hide();
-ls
-        
+//        final ActionBar actionBar = getSupportActionBar();
+//        actionBar.hide();
+//ls
+
         setContentView(R.layout.activity_account);
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        actionbar = getSupportActionBar();
+
+        actionbar.setDisplayHomeAsUpEnabled(true);
+        actionbar.setHomeAsUpIndicator(R.drawable.ic_menu);
+
         Bundle account_data =getIntent().getExtras();
         if(account_data==null)
             return;
@@ -58,7 +78,7 @@ ls
                     }
                 })
                 .build();
-        Drawer drawer =  new DrawerBuilder().withActivity(this).withAccountHeader(headerResult)
+        drawer = new DrawerBuilder().withActivity(this).withAccountHeader(headerResult)
                 .withTranslucentStatusBar(false)
                 .withActionBarDrawerToggle(false).addDrawerItems(item1,item2,item3,item4,item5,item6,item7)
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener(){
@@ -70,12 +90,96 @@ ls
 
                     }
                 }).build();
+
+
+
+
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+//        drawer.getActionBarDrawerToggle().setDrawerIndicatorEnabled(true);
+//        drawer.getActionBarDrawerToggle().setDrawerIndicatorEnabled(true);
 //        if(drawer.isDrawerOpen()==true){
 //            actionBar.hide();
 //        } else actionBar.show();
 
 
-        textView =(TextView)findViewById(R.id.emailfield);
-               textView.setText(email_id);
+
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.action_bar, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+               drawer.openDrawer();
+                return true;
+            case R.id.action_favorite:
+                WebView myWebView = (WebView) findViewById(R.id.webview);
+                myWebView.loadUrl("http://www.smartgriha.com");
+                return true;
+            case R.id.logout:
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
+
+            super.onBackPressed();
+
+        } else {
+
+            final android.support.v7.app.AlertDialog ad = new android.support.v7.app.AlertDialog.Builder(this)
+                    .create();
+            ad.setCancelable(false);
+            ad.setTitle("Exit ?");
+            ad.setMessage("Do you really want to exit ? ");
+            ad.setButton(DialogInterface.BUTTON_POSITIVE, "yes", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    ad.cancel();
+                    finish();
+                }
+            });
+            ad.setButton(DialogInterface.BUTTON_NEGATIVE, "no", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    ad.cancel();
+
+                }
+            });
+            ad.show();
+        }
+    }
+
+    public void setFragment(Fragment fragment) {
+        if (fragment != null) {
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.contentContainer, fragment);
+            fragmentTransaction.commit();
+        }
+    }
+
+    public void addFragment(Fragment fragment) {
+        if (fragment != null) {
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.addToBackStack(null);
+            fragmentTransaction.replace(R.id.contentContainer, fragment);
+            fragmentTransaction.commit();
+        }
+    }
+
+
+
+
 }
