@@ -18,32 +18,12 @@
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
 
-    <WebView  xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/webview"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_below="@+id/toolbar"
-        />
+
     <FrameLayout
         android:id="@+id/contentContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/toolbar" />
 
-
-
-
-
-
-
-    <Button
-        android:id="@+id/sign_out"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/emailfield"
-        android:layout_below="@+id/emailfield"
-        android:layout_marginTop="40dp"
-        android:text="Sign Out"
-        android:textAppearance="@android:style/TextAppearance.DeviceDefault" />
 
 </android.widget.RelativeLayout>

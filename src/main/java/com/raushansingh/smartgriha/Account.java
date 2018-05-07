@@ -2,6 +2,7 @@ package com.raushansingh.smartgriha;
 
 
 import android.content.DialogInterface;
+import android.net.Uri;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -46,18 +47,20 @@ public class Account extends AppCompatActivity {
 
     Drawer drawer ;
     ActionBar actionbar;
-    PrimaryDrawerItem item1 = new PrimaryDrawerItem().withIdentifier(1).withName(R.string.connect);
-    PrimaryDrawerItem item2 = new PrimaryDrawerItem().withIdentifier(2).withName(R.string.add_device);
-    PrimaryDrawerItem item3 = new PrimaryDrawerItem().withIdentifier(3).withName(R.string.customize);
-    PrimaryDrawerItem item4 = new PrimaryDrawerItem().withIdentifier(4).withName(R.string.share);
-    PrimaryDrawerItem item5 = new PrimaryDrawerItem().withIdentifier(5).withName(R.string.about);
-    PrimaryDrawerItem item6 = new PrimaryDrawerItem().withIdentifier(6).withName(R.string.help);
-    PrimaryDrawerItem item7 = new PrimaryDrawerItem().withIdentifier(7).withName(R.string.service);
+    PrimaryDrawerItem item1 = new PrimaryDrawerItem().withIdentifier(1).withName(R.string.connect).withIcon(R.drawable.first);
+    PrimaryDrawerItem item2 = new PrimaryDrawerItem().withIdentifier(2).withName(R.string.add_device).withIcon(R.drawable.second);
+    PrimaryDrawerItem item3 = new PrimaryDrawerItem().withIdentifier(3).withName(R.string.customize).withIcon(R.drawable.third);
+    PrimaryDrawerItem item4 = new PrimaryDrawerItem().withIdentifier(4).withName(R.string.share).withIcon(R.drawable.fourth);
+    PrimaryDrawerItem item5 = new PrimaryDrawerItem().withIdentifier(5).withName(R.string.about).withIcon(R.drawable.fifth);
+    PrimaryDrawerItem item6 = new PrimaryDrawerItem().withIdentifier(6).withName(R.string.help).withIcon(R.drawable.sixth);
+    PrimaryDrawerItem item7 = new PrimaryDrawerItem().withIdentifier(7).withName(R.string.service).withIcon(R.drawable.seventh);
+
+    PrimaryDrawerItem item8 = new PrimaryDrawerItem().withIdentifier(8).withName(R.string.developer).withIcon(R.drawable.eight);
 
 
 
 
-    private Button sign_Out;
+//    private Button sign_Out;
     private FirebaseAuth firebaseAuth;
 
 
@@ -81,20 +84,21 @@ public class Account extends AppCompatActivity {
 
 
 
-        sign_Out =(Button)findViewById(R.id.sign_out);
+//        sign_Out =(Button)findViewById(R.id.sign_out);
         firebaseAuth =FirebaseAuth.getInstance();
 
         Bundle account_data =getIntent().getExtras();
         if(account_data==null)
             return;
         String email_id =account_data.getString("email_id");
+        String name =account_data.getString("name");
 
 
         AccountHeader headerResult = new AccountHeaderBuilder()
                 .withActivity(this)
-                .withHeaderBackground(R.drawable.background)
+                .withHeaderBackground(R.color.material_drawer_dark_background)
                 .addProfiles(
-                        new ProfileDrawerItem().withName("Shubham raj").withEmail(email_id).withIcon(R.drawable.background))
+                        new ProfileDrawerItem().withName(name).withEmail(email_id))
         .withOnAccountHeaderListener(new AccountHeader.OnAccountHeaderListener() {
                     @Override
                     public boolean onProfileChanged(View view, IProfile profile, boolean currentProfile) {
@@ -104,11 +108,12 @@ public class Account extends AppCompatActivity {
                 .build();
         drawer = new DrawerBuilder().withActivity(this).withAccountHeader(headerResult)
                 .withTranslucentStatusBar(false)
-                .withActionBarDrawerToggle(false).addDrawerItems(item1,item2,item3,item4,item5,item6,item7)
+                .withActionBarDrawerToggle(false).addDrawerItems(item1,item2,item3,item4,item5,item6,item7,item8)
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener(){
                     @Override
                     public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
 //to do
+
 
                         return false;
 
@@ -128,23 +133,23 @@ public class Account extends AppCompatActivity {
 
 
 
-        sign_Out.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                firebaseAuth.signOut();
-                /*FirebaseAuth.AuthStateListener authStateListener =new FirebaseAuth.AuthStateListener() {
-                @Override
-                    public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                        FirebaseUser user = firebaseAuth.getCurrentUser();
-                if(user ==null)
-                        {*/
-                            startActivity(new Intent(Account.this,Register.class));
-                            finish();
-                      /*}
-                   }
-                };*/
-            }
-        });
+//        sign_Out.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                firebaseAuth.signOut();
+//                /*FirebaseAuth.AuthStateListener authStateListener =new FirebaseAuth.AuthStateListener() {
+//                @Override
+//                    public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+//                        FirebaseUser user = firebaseAuth.getCurrentUser();
+//                if(user ==null)
+//                        {*/
+//                            startActivity(new Intent(Account.this,Register.class));
+//                            finish();
+//                      /*}
+//                   }
+//                };*/
+//            }
+//        });
     }
 
 //    @Override
@@ -168,10 +173,16 @@ public class Account extends AppCompatActivity {
                drawer.openDrawer();
                 return true;
             case R.id.action_favorite:
-                WebView myWebView = (WebView) findViewById(R.id.webview);
-                myWebView.loadUrl("http://www.smartgriha.com");
+
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.smartgriha.com"));
+                startActivity(browserIntent);
+
                 return true;
             case R.id.logout:
+                firebaseAuth.signOut();
+                startActivity(new Intent(Account.this,Register.class));
+                          finish();
+
                 return true;
         }
         return super.onOptionsItemSelected(item);

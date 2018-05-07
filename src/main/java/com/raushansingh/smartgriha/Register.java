@@ -106,6 +106,9 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
                         boolean emailVerified =user.isEmailVerified();
                         String uid =user.getUid();
                         i.putExtra("email_id",email);
+                        i.putExtra("name",name);
+                        i.putExtra("photoUrl",photoUrl);
+                        i.putExtra("id",uid);
 
                     }
                     startActivity(i);
