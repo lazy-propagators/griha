@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#008080"
     tools:context="com.raushansingh.smartgriha.Registration">
 
     <ImageView
@@ -12,7 +13,6 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="24dp"
         app:srcCompat="@drawable/smart" />
 
     <TextView
@@ -47,24 +47,13 @@
         android:hint="set password"
         android:inputType="textPassword" />
 
-    <EditText
-        android:id="@+id/mob_no"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/new_pass"
-        android:layout_below="@+id/new_pass"
-        android:layout_marginTop="22dp"
-        android:ems="10"
-        android:hint="mobile no."
-        android:inputType="phone" />
-
     <Button
         android:id="@+id/submit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/new_pass"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="83dp"
-        android:text="SUBMIT"
-        android:onClick="onClick" />
+        android:layout_marginTop="26dp"
+        android:onClick="onClick"
+        android:text="SUBMIT" />
 </android.widget.RelativeLayout>
