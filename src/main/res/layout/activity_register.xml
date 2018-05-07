@@ -14,7 +14,6 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="22dp"
         app:srcCompat="@drawable/smart" />
 
     <TextView
@@ -23,7 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/smartgriha"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="51dp"
+        android:layout_marginTop="24dp"
         android:text="LOGIN | SIGNUP"
         android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large" />
 
@@ -42,8 +41,9 @@
         android:id="@+id/pfield"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/efield"
-        android:layout_centerVertical="true"
+        android:layout_alignStart="@+id/efield"
+        android:layout_below="@+id/efield"
+        android:layout_marginTop="19dp"
         android:ems="10"
         android:hint="password"
         android:inputType="textPassword" />
@@ -78,9 +78,9 @@
         android:id="@+id/follow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/signup"
+        android:layout_above="@+id/twitter"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
+        android:layout_marginBottom="11dp"
         android:text="follow us on"
         android:textAppearance="@android:style/TextAppearance.Medium" />
 
@@ -88,7 +88,7 @@
         android:id="@+id/facebook"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/follow"
+        android:layout_alignParentBottom="true"
         android:layout_toStartOf="@+id/signup"
         app:srcCompat="@drawable/facebook" />
 
@@ -97,14 +97,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignEnd="@+id/login"
-        android:layout_below="@+id/follow"
+        android:layout_alignParentBottom="true"
         app:srcCompat="@drawable/twitter" />
 
     <ImageButton
         android:id="@+id/linkedin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/follow"
+        android:layout_alignParentBottom="true"
         android:layout_toEndOf="@+id/login_signup"
         app:srcCompat="@drawable/linkedin" />
 

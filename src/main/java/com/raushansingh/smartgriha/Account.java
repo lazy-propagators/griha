@@ -1,5 +1,6 @@
 package com.raushansingh.smartgriha;
 
+
 import android.content.DialogInterface;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -28,9 +29,21 @@ import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IProfile;
 
+import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
+
 public class Account extends AppCompatActivity {
 
-    private TextView textView;
+
     Drawer drawer ;
     ActionBar actionbar;
     PrimaryDrawerItem item1 = new PrimaryDrawerItem().withIdentifier(1).withName(R.string.connect);
@@ -44,6 +57,10 @@ public class Account extends AppCompatActivity {
 
 
 
+    private Button sign_Out;
+    private FirebaseAuth firebaseAuth;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +71,7 @@ public class Account extends AppCompatActivity {
 
         setContentView(R.layout.activity_account);
 
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         actionbar = getSupportActionBar();
@@ -61,10 +79,16 @@ public class Account extends AppCompatActivity {
         actionbar.setDisplayHomeAsUpEnabled(true);
         actionbar.setHomeAsUpIndicator(R.drawable.ic_menu);
 
+
+
+        sign_Out =(Button)findViewById(R.id.sign_out);
+        firebaseAuth =FirebaseAuth.getInstance();
+
         Bundle account_data =getIntent().getExtras();
         if(account_data==null)
             return;
         String email_id =account_data.getString("email_id");
+
 
         AccountHeader headerResult = new AccountHeaderBuilder()
                 .withActivity(this)
@@ -103,7 +127,32 @@ public class Account extends AppCompatActivity {
 
 
 
+
+        sign_Out.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                firebaseAuth.signOut();
+                /*FirebaseAuth.AuthStateListener authStateListener =new FirebaseAuth.AuthStateListener() {
+                @Override
+                    public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                        FirebaseUser user = firebaseAuth.getCurrentUser();
+                if(user ==null)
+                        {*/
+                            startActivity(new Intent(Account.this,Register.class));
+                            finish();
+                      /*}
+                   }
+                };*/
+            }
+        });
     }
+
+//    @Override
+//    public void onBackPressed() {
+//        super.onBackPressed();
+//
+//
+//    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

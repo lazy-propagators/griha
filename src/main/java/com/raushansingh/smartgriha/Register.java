@@ -124,7 +124,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
     private void sign_in()
     {
         Toast.makeText(this,"taking you to registration page",Toast.LENGTH_SHORT).show();
-        startActivity(new Intent(Register.this,Registration.class));
+        startActivity(new Intent(Register.this,phone_no_verification.class));
     }
 
     private void forgot_pass()
@@ -148,6 +148,8 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         Toast.makeText(this,"linkedin",Toast.LENGTH_SHORT).show();
     }
 
+
+
     @Override
     public void onClick(View v)
     {
@@ -163,6 +165,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
             twiiter_follow();
         if(v == ld)
             linkedin_follow();
+
 
 
     }

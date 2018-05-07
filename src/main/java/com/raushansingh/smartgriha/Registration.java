@@ -7,6 +7,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,15 +15,20 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseTooManyRequestsException;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.PhoneAuthProvider;
+
+import java.util.concurrent.TimeUnit;
 
 public class Registration extends AppCompatActivity {
 
     private EditText email_id;
     private EditText password;
-    private EditText phone;
+    //private EditText phone;
     private Button submit;
     private FirebaseAuth mAuth;
     private ProgressDialog progressDialog;
@@ -34,17 +40,19 @@ public class Registration extends AppCompatActivity {
         setContentView(R.layout.activity_registration);
         email_id =(EditText)findViewById(R.id.new_email);
         password =(EditText)findViewById(R.id.new_pass);
-        phone =(EditText)findViewById(R.id.mob_no);
+        //phone =(EditText)findViewById(R.id.mob_no);
         submit =(Button)findViewById(R.id.submit);
         progressDialog =new ProgressDialog(this);
         mAuth =FirebaseAuth.getInstance();
         mAuthListener =new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                if(firebaseAuth.getCurrentUser()!=null)
-                    startActivity(new Intent(Registration.this,Account.class));
+                if(firebaseAuth.getCurrentUser()!=null) {
+                    //startActivity(new Intent(Registration.this,Account.class));
+                }
             }
         };
+
 
     }
 
@@ -52,15 +60,19 @@ public class Registration extends AppCompatActivity {
     public void onStart()
     {
         super.onStart();
-        FirebaseUser currUser =mAuth.getCurrentUser();
-       // mAuth.addAuthStateListener(mAuthListener);
+        //FirebaseUser currUser =mAuth.getCurrentUser();
+        //mAuth.addAuthStateListener(mAuthListener);
     }
+
+
+
+
 
     private void createAccount()
     {
         String email =email_id.getText().toString().trim();
         String pass =password.getText().toString().trim();
-        String ph =phone.getText().toString().trim();
+        // ph =phone.getText().toString().trim();
         if(TextUtils.isEmpty(email))
         {
             Toast.makeText(this,"please enter email",Toast.LENGTH_SHORT).show();
@@ -71,11 +83,11 @@ public class Registration extends AppCompatActivity {
             Toast.makeText(this,"please enter password",Toast.LENGTH_SHORT).show();
             return;
         }
-        if(TextUtils.isEmpty(ph))
-        {
-            Toast.makeText(this,"please enter phone number",Toast.LENGTH_SHORT).show();
-            return;
-        }
+       // if(TextUtils.isEmpty(ph))
+       // {
+       //     Toast.makeText(this,"please enter phone number",Toast.LENGTH_SHORT).show();
+       //     return;
+       // }
         progressDialog.setMessage("Registering user...");
         progressDialog.show();
         mAuth.createUserWithEmailAndPassword(email,pass).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -83,8 +95,9 @@ public class Registration extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful())
                 {
-                    Toast.makeText(Registration.this,"Registered successfully",Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(Registration.this, Activity.class));
+                    Toast.makeText(Registration.this,"successfully Registered ",Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(Registration.this, Register.class));
+                    Toast.makeText(Registration.this,"You can Login now",Toast.LENGTH_SHORT).show();
                     finish();
                 }
                 else
