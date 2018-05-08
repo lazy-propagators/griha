@@ -113,7 +113,18 @@ public class Account extends AppCompatActivity {
                     @Override
                     public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
 //to do
+                    switch (position){
+                        case 6:
+                            HelpFragment helpFragment = new HelpFragment();
+                            setFragment(helpFragment);
+                            break;
+                        case 7:
+                            Intent intent = new Intent(Intent.ACTION_DIAL);
+                            intent.setData(Uri.parse("tel:0987654321"));
+                            startActivity(intent);
+                            break;
 
+                    }
 
                         return false;
 
